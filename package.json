@@ -1,0 +1,20 @@
+{
+  "name": "collaborative-text-editor",
+  "version": "1.0.0",
+  "description": "An awesome collab-edit",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "js-crawler": "^0.3.21",
+    "pusher": "^1.5.1"
+  },
+  "devDependencies": {
+    "express": "^4.16.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ankeet Maini",
+  "license": "MIT"
+}
