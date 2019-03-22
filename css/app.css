@@ -1,0 +1,51 @@
+body {
+  font-family: "Helvetica","Arial",sans-serif;
+  background: #f5f5f5;
+}
+
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.header__h1 {
+  margin: 20px;
+  padding: 10px;
+  color: #424242;
+}
+
+.doc .doc__background-ribbon {
+  height: 200px;
+  background: #3F51B5;
+}
+
+.doc .doc__search-box {
+  width: 50%;
+  height: 40px;
+  margin: 0 auto;
+  position: relative;
+  top: -150px;
+  font-size: 24px;
+}
+
+.doc .search-button {
+  width: 40px;
+  height: 40px;
+  background: rgb(149, 151, 241);
+  position: relative;
+  top: -150px;
+  font-size: 24px;
+}
+
+.doc .doc__text-editor {
+  float: right;
+  width: 40%;
+  padding: 20px 14px;
+  height: 80%;
+  background: #fff;
+  margin: 0 auto;
+  position: relative;
+  top: -150px;
+  font-size: 10px;
+}

@@ -1,0 +1,27 @@
+{
+  "name": "collaborative-text-editor",
+  "version": "1.0.0",
+  "description": "An awesome collab-edit",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "js-crawler": "^0.3.21",
+    "puppeteer": "^1.13.0",
+    "pusher": "^1.5.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "seneca": "^3.8.4",
+    "seneca-web": "^2.2.1",
+    "seneca-web-adapter-express": "^1.1.2"
+  },
+  "devDependencies": {
+    "express": "^4.16.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ankeet Maini",
+  "license": "MIT"
+}

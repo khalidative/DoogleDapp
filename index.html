@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Doogle | Search Anything!</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script
+              src="https://code.jquery.com/jquery-3.3.1.min.js"
+              integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+              crossorigin="anonymous"></script> 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script data-main="js/main" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script> -->
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__h1">Doogle</h1>
+    </header>
+    <div class="doc">
+      <div class="doc__background-ribbon"></div>
+      <textarea id="search" class="doc__search-box"></textarea>
+      <input type="button" value="=>" class="search-button" onclick="generateResults()">
+      <textarea id="doc" class="doc__text-editor" onchange="triggerChange('f')"></textarea>
+      <input type="button" id="getbutton" value="Sync with nearby nodes">
+    </div>
+    <div class="results">
+      <ul id="dynamic-list"></ul>
+    </div>
+    <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/search.js"></script>
+  </body>
+</html>
