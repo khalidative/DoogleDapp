@@ -15,7 +15,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Ankeet Maini",
+  "author": "Waleed Mohamed",
   "license": "MIT",
   "engines":{"node": "10.x.x"}
 }
