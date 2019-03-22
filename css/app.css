@@ -23,6 +23,7 @@ body {
 .doc .doc__search-box {
   width: 50%;
   height: 40px;
+  background: #fff;
   margin: 0 auto;
   position: relative;
   top: -150px;
