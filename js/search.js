@@ -3,10 +3,10 @@ searchbox.contentEditable = true;
 searchbox.focus();
 
 var linksbox = document.getElementById('doc');
-linksbox.textContent = "https://google.com<>google<>Google<>Search anything" + "\n"
-linksbox.textContent += "https://bing.com<>bing<>Bing<>Search anything" + "\n"
-linksbox.textContent += "https://google.com<>search<>Google<>Search anything" + "\n"
-linksbox.textContent += "https://bing.com<>search<>Bing<>Search anything" + "\n"
+linksbox.value = "https://google.com<>google<>Google<>Search anything" + "\n"
+linksbox.value += "https://bing.com<>bing<>Bing<>Search anything" + "\n"
+linksbox.value += "https://google.com<>search<>Google<>Search anything" + "\n"
+linksbox.value += "https://bing.com<>search<>Bing<>Search anything" + "\n"
 
 var results = new Array()
 
@@ -14,7 +14,7 @@ var AllRecords;
 
 function search(word)
 {
-    var all_links = linksbox.textContent
+    var all_links = linksbox.value
     var index = all_links.split("\n")
     for(var i = 0; i < index.length; i++)
     {
@@ -26,9 +26,12 @@ function search(word)
         if(keyword == word)
         {
             var link = new Link(url, keyword, title, description)
-            results[results.length] = link;
-            console.log(results[results.length - 1].keyword + "<>" + results[results.length - 1].url)
+            results.push(link);
         }
+    }
+    for(var i=0;i<results.length;i++)
+    {
+        console.log(results[i].keyword + "<>" + results[i].url)
     }
 }
 
@@ -45,34 +48,21 @@ let Link = class
 }
 
 function addItem(link){
-    var ul = document.getElementById("dynamic-list");
-    var li = document.createElement("li");
-    li.setAttribute('id',link.relevance);
-    var node = document.createElement("A")
-    node.innerHTML = link.title + "<br/>" + link.description
-    node.href = link.url
-    li.appendChild(node);
-    ul.appendChild(li);
+    $('#dynamic-list').append("<li class='link'><div class='advance-search'><a href='"+link.url+"'><strong>"+link.title+"</strong></a><p>"+link.description+"</p></div></li>")
 }
-
-// function removeItem(link){
-//     var ul = document.getElementById("dynamic-list");
-//     var item = document.getElementById(link.relevance);
-//     ul.removeChild(item);
-//     ul.remo
-// }
 
 function generateResults()
 {
     //Getting the search query
+    results = []
     var rankedResults = new Array()
-    var search_query = document.getElementById('search').textContent
+    var search_query = document.getElementById('search').value
     var words = search_query.split(" ")
     for(var i = 0; i < words.length; i++)
-    {
+    {console.log("Entered search loop" +i)
         search(words[i])
     }
-    console.log("remove duplicate urls by increamenting relevance" + rankedResults.length)
+    console.log("remove duplicate urls by increamenting relevance " +results.length)
     for(var i = 0; i < results.length; i++)
     {
         var addlink = true
@@ -80,18 +70,20 @@ function generateResults()
         // if it does then increament the relevance by 1
         for(var j = 0; j < rankedResults.length; j++)
         {
-            if((rankedResults[j].url != null) && results[i].url == rankedResults[j].url )
+            if(results[i].url == rankedResults[j].url )
             {
                 rankedResults[j].relevance += 1
                 addlink = false
+                console.log("increamenting relevance of "+rankedResults[j].url+" by "+rankedResults[j].relevance)
             }
         }
         if(addlink)
         {
-            rankedResults[rankedResults.length] = results[i]
+            rankedResults.push(results[i])
+            console.log("added link: "+rankedResults[i].url)
         }
     }
-    
+    console.log(rankedResults)
     //Performing selection sort on the array
     for(var i = 0; i < rankedResults.length; i++)
     {
@@ -105,31 +97,65 @@ function generateResults()
             }
         }
     }
-
+    for(var i=0;i<rankedResults.length;i++)
+    {
+        console.log(rankedResults[i].url)
+    }
+    $('#dynamic-list').empty()
     for(var i = 0; i < rankedResults.length; i++)
     {
-        console.log(rankedResults[i].url + "<>" + rankedResults[i].relevance)
         addItem(rankedResults[i])
     }
+    document.getElementById('search').value = ""
+    if(event.preventDefault) event.preventDefault();
 }
 
 //========================================================================
 
-$("#getbutton").click(function(){
-    $.ajax({
-      type: "GET",
-      url: '/nodes/' + "Sync",
-      success: function(result){
-        //$('#doc').text(JSON.stringify(result));
-        for(var i = 0; i < result.crawledLinks.length; i++)
-        {
-            linksbox.textContent += result.crawledLinks[i] + "\n";
-        }
-        // .crawledLinks.foreach(function(record){linksbox.textContent = linksbox.textContent + record})
-      }
+// $("#getbutton").click(function(){
+//     $.ajax({
+//       type: "GET",
+//       url: '/nodes/' + "Sync",
+//       success: function(result){
+//         //$('#doc').text(JSON.stringify(result));
+//         linksbox.value = ""
+//         for(var i = 0; i < result.crawledLinks.length; i++)
+//         {
+//             linksbox.value += result.crawledLinks[i] + "\n";
+//         }
+        
+//         linksbox.fireEvent('input')
+//         // .crawledLinks.foreach(function(record){linksbox.textContent = linksbox.textContent + record})
+//       }
   
-    });
-    //linksbox.textContent = JSON.stringify(AllRecords)
-});
-
+//     });
+//     //linksbox.textContent = JSON.stringify(AllRecords)
+// });
+window.setInterval(function(){
+    $.ajax({
+        type: "GET",
+        url: '/nodes/' + "Sync",
+        success: function(result){
+          //$('#doc').text(JSON.stringify(result));
+          linksbox.value = ""
+          for(var i = 0; i < result.crawledLinks.length; i++)
+          {
+              linksbox.value += result.crawledLinks[i] + "\n";
+          }
+          
+        //   linksbox.fireEvent('input')
+          // .crawledLinks.foreach(function(record){linksbox.textContent = linksbox.textContent + record})
+        }
+    
+      });
+      //linksbox.textContent = JSON.stringify(AllRecords)
+}, 10000)
 //========================================================================
+
+// window.onkeydown=function(event){
+//     if(event.keyCode==13){
+//         sendNew();
+//         if(event.preventDefault) event.preventDefault(); // This should fix it
+//         return false; // Just a workaround for old browsers
+//     }
+// }

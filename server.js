@@ -53,9 +53,11 @@ crawler.crawl({
       var $ = cheerio.load(html);
       var title = $("title").text()
       var keywords = $("meta[name='keywords']").attr("content").split(/[\s,]+/)
+      keywords.push(title.split(/[\s,]+/))
       for(var i = 0; i < keywords.length; i++)
       {
-        indeces.push(page.url + "<>" + keywords[i].toLowerCase() + "<>" + $("title").text() + "<>" + $("meta[name='description']").attr("content"));
+        // console.log(page.url + "<>" + keywords[i].toLowerCase() + "<>" + $("title").text() + "<>" + $("meta[name='description']").attr("content"))
+        indeces.push(page.url + "<>" + keywords[i].toLowerCase() + "<>" + $("title").text().toLowerCase() + "<>" + $("meta[name='description']").attr("content"));
       }
     })
     .catch(function(err){
@@ -103,12 +105,12 @@ seneca.act("role:web", config);
 
 seneca.add("role:api,cmd:sync", function(req, done) {
   try {
-    console.error(indeces);
+    // console.error(indeces);
     done(null, {
       crawledLinks: indeces
     });
   } catch (error) {
-      console.error(error);
+      // console.error(error);
       done(null, {
         crawledLinks: error
       });

@@ -1,37 +1,36 @@
-<!DOCTYPE>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Doogle | Search Anything!</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script
-              src="https://code.jquery.com/jquery-3.3.1.min.js"
-              integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-              crossorigin="anonymous"></script> 
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script data-main="js/main" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet"></link>
   </head>
   <body>
-    <header class="header">
-      <h1 class="header__h1">Doogle</h1>
-    </header>
-    <div class="doc">
-      <div class="doc__background-ribbon"></div>
-      <textarea id="search" class="doc__search-box"></textarea>
-      <input type="button" value="=>" class="search-button" onclick="generateResults()">
-      <textarea id="doc" class="doc__text-editor" onchange="triggerChange('f')"></textarea>
-      <input type="button" id="getbutton" value="Sync with nearby nodes">
-    </div>
-    <div class="results">
-      <ul id="dynamic-list"></ul>
+    <div class="s010">
+      <form>
+        <div class="inner-form">
+          <div class="basic-search">
+            <div class="input-field">
+              <input id="search" type="text" placeholder="Type Keywords" onkeydown="if(event.keyCode == 13) generateResults();" />
+              <div class="icon-wrap" onclick="generateResults();">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <ul id="dynamic-list" style="left:10px"></ul>
+          <textarea id="doc" class="doc__text-editor" onclick="$('#doc').css('visibility : visible')"></textarea>
+        </div>
+      </form>
     </div>
     <script src="https://js.pusher.com/4.0/pusher.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/search.js"></script>
-  </body>
+    </body>
 </html>

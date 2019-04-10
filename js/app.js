@@ -1,6 +1,6 @@
 // IIFE keeps our variables private
 // and gets executed immediately!
-(function () {
+$(function () {
   // make doc editable and focus
   var doc = document.getElementById('doc');
   doc.contentEditable = true;
@@ -38,11 +38,8 @@
     }
 
     doc.addEventListener('input', triggerChange);
+    //$('#doc').on('change', triggerChange(e))
   })
-
-  function triggerChange (e) {
-    channel.trigger('client-text-edit', e.target.innerHTML);
-  }
 
   // a unique random key generator
   function getUniqueId () {
