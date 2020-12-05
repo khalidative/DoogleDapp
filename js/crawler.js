@@ -1,5 +1,5 @@
 var name = "codemzy";
-var url = "https://waleedmohamed.com";
+var url = "https://www.google.com";
 $.get(url, function(response) {
   console.log(response);
 });
