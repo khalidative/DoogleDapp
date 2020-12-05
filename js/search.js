@@ -3,10 +3,10 @@ searchbox.contentEditable = true;
 searchbox.focus();
 
 var linksbox = document.getElementById('doc');
-linksbox.value = "https://google.com<>google<>Google<>Search anything" + "\n"
-linksbox.value += "https://bing.com<>bing<>Bing<>Search anything" + "\n"
-linksbox.value += "https://google.com<>search<>Google<>Search anything" + "\n"
-linksbox.value += "https://bing.com<>search<>Bing<>Search anything" + "\n"
+linksbox.value = "https://google.com<>google<>Google<>Search anything" + "\n";
+linksbox.value += "https://bing.com<>bing<>Bing<>Search anything" + "\n";
+linksbox.value += "https://google.com<>search<>Google<>Search anything" + "\n";
+linksbox.value += "https://bing.com<>search<>Bing<>Search anything" + "\n";
 
 var results = new Array()
 
