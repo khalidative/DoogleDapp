@@ -5,8 +5,9 @@ searchbox.focus();
 var linksbox = document.getElementById('doc');
 linksbox.value = "https://google.com<>google<>Google<>Search anything" + "\n";
 linksbox.value += "https://bing.com<>bing<>Bing<>Search anything" + "\n";
-linksbox.value += "https://google.com<>search<>Google<>Search anything" + "\n";
-linksbox.value += "https://bing.com<>search<>Bing<>Search anything" + "\n";
+linksbox.value += "https://yahoo.com<>yahoo<>Yahoo<>Search anything" + "\n";
+linksbox.value += "https://wikipedia.com<>Wikipedia<>Wikipedia<>Discover All The Information You Need" + "\n";
+linksbox.value += "https://netflix.com<>Netflix<>Netflix<>Netflix And Chill" + "\n";
 
 var results = new Array()
 
